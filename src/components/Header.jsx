@@ -18,7 +18,7 @@ function Header() {
                         <FontAwesomeIcon icon={faBars} style={{ color: "#FFFFFF", fontSize: '25px' }} />
                     </Navbar.Toggle>
                     <Navbar.Collapse id="navbarScroll">
-                        <Link to='/home'>
+                        <Link to='/Portfolio/'>
                             <Navbar.Brand>
                                 <img
                                     className="mr-3"
@@ -30,7 +30,7 @@ function Header() {
                         </Link>
                         <Nav className="d-flex flex-grow-1 ">
                             <div className="d-flex flex-grow-1 align-items-center justify-content-center">
-                                <Link to='/' className='nav-link text-decoration-none m-3' style={{ color: '#232124', fontWeight: '600' }}>Home</Link>
+                                <Link to='/Portfolio/' className='nav-link text-decoration-none m-3' style={{ color: '#232124', fontWeight: '600' }}>Home</Link>
                                 <Link to='/about' className='nav-link  text-decoration-none m-3' style={{ color: '#232124', fontWeight: '600' }}>About</Link>
                                 <Link to='/resume' className='nav-link  text-decoration-none m-3' style={{ color: '#232124', fontWeight: '600' }}>Resume</Link>
                                 <Link to='/contact' className='nav-link  text-decoration-none m-3' style={{ color: '#232124', fontWeight: '600' }}>Contact</Link>
