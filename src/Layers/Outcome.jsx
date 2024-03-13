@@ -7,8 +7,8 @@ function Outcome() {
     return (
         <div>
             <Header></Header>
-            <Footer></Footer>
             <Outlet></Outlet>
+            <Footer />
         </div>
     )
 }

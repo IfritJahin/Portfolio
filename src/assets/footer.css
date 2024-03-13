@@ -1,0 +1,13 @@
+.footer {
+    flex-shrink: 0; /* Prevent footer from shrinking */
+  }
+  
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footertext {
+    margin-top: 10px;
+  }
+  

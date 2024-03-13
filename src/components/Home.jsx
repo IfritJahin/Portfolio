@@ -2,6 +2,7 @@ import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/home.css'
 import me from '../img/dp_demo.png'
+import bgv from '../img/Bgv.mp4'
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,8 +10,8 @@ import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { Card, Image, OverlayTrigger, Tooltip, Button, Tab, Tabs, Form, Row, Col, Nav, Container, Badge } from 'react-bootstrap';
 function Home() {
     return (
-        <div className='mt-5'>
-            <Container fluid className='cont p-4'>
+        <div className=''>
+            <Container fluid className='mt-5 cont p-4'>
                 <div className='d-flex flex-column flex-md-row'>
                     <div className='part text-align-left position-relative' id='part' style={{ width: '100%' }}>
                         <h3>Hey there! I'm </h3>
@@ -26,10 +27,32 @@ function Home() {
                         </div>
                     </div>
                     <div id='pic' className='column2 position-relative'>
-                        <Image src={me} alt='' className='pic' style={{ width: '450px', height: 'auto', zIndex: 3, position: 'relative' }} />
+                        <Image src={me} alt='' className='pic' style={{ width: '420px', height: 'auto', zIndex: 3, position: 'relative' }} />
                     </div>
                 </div>
             </Container >
+            <Container fluid className='mt-5 mb-5 cont p-4' style={{ background: 'linear-gradient(120deg, rgba(218,208,250,1) 0%, rgba(200,165,201,1) 100%)', margin: 0 }}>
+                <Row className='d-flex flex-column flex-md-row'>
+                    <Col xs={12} md={6} className='p-md-3'>
+                        <h1 style={{ fontSize: '4rem', fontWeight: 'bold' }}>Skills & <span style={{ color: '#ad21ff' }}>Experience</span></h1>
+                    </Col>
+                    <Col xs={12} md={6} className='p-md-3'>
+                        <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>Experience</h1>
+                        <Col xs={6} lg="1" className='mt-4'>
+                            <div className="vl"></div>
+                        </Col>
+                        <Row className="mt-5">
+                            <Col xs="auto" className="pr-3 mt-1">
+                                <p style={{ fontSize: '10px', fontWeight: 'bold', margin: 0 }}>September 2023- January 2024</p>
+                            </Col>
+                            <Col xs="auto" className='mt-0'>
+                                <h4 style={{ fontSize: '22px', fontWeight: 'bold', margin: 0, color: '#ad21ff' }}>Front End Developer Intern</h4>
+                            </Col>
+                        </Row>
+                    </Col>
+                </Row>
+            </Container>
+
         </div >
     );
 };

@@ -6,7 +6,9 @@ import Portfolio from './components/Portfolio'
 import Resume from './components/Resume'
 import Contact from './components/Contact'
 import './App.css'
+import useWindowSize from './useWindowSize';
 import Outcome from './Layers/Outcome';
+import Footer from './components/Footer';
 function App() {
   const router = createBrowserRouter([{
     path: '/', element: <Outcome></Outcome>,
@@ -16,9 +18,8 @@ function App() {
       { path: '/about', element: <About></About> },
       { path: '/resume', element: <Resume></Resume> },
       { path: '/portfolio', element: <Portfolio></Portfolio> },
-      { path: '/contact', element: <Contact></Contact> }
-    ]
-
+      { path: '/contact', element: <Contact></Contact> },
+    ],
   },
 
   { path: '/*', element: <div>This Route Not Found</div> }
@@ -29,6 +30,8 @@ function App() {
       <RouterProvider router={router}>
 
       </RouterProvider>
+
+
     </div>
 
   )
