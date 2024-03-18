@@ -1,0 +1,41 @@
+.circular-slider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .options {
+    display: flex;
+  }
+  
+  .option {
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 50%;
+  }
+  
+  .option.active {
+    background-color: lightblue;
+  }
+  
+  .slider {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: relative;
+  }
+  
+  .indicator {
+    width: 4px;
+    height: 60px;
+    background-color: red;
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 2px);
+    transform-origin: bottom;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+  }
+  

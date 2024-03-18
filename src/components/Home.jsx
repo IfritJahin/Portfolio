@@ -3,12 +3,81 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../assets/home.css'
 import me from '../img/dp_demo.png'
 import bgv from '../img/Bgv.mp4'
-import { useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faBorderNone, faDownload } from '@fortawesome/free-solid-svg-icons';
 import { Card, Image, OverlayTrigger, Tooltip, Button, Tab, Tabs, Form, Row, Col, Nav, Container, Badge } from 'react-bootstrap';
+import { color } from 'framer-motion';
+import frontImage from '../img/front.png'; // Import your images
+import graphicImage from '../img/graphic.png';
+import uiImage from '../img/ui.png';
+
+
 function Home() {
+    const [activeSkillIndex, setActiveSkillIndex] = useState(0);
+    const rotateValues = [
+        { image: -58, indicator: 0 }, // Rotation values for the first skill
+        { image: 58, indicator: 58 },    // Rotation values for the second skill
+        { image: 0, indicator: -58 }     // Rotation values for the third skill
+    ];
+    const colors = [
+        "radial-gradient(circle, rgba(233,225,255,1) 0%, rgba(203,182,253,1) 100%)",
+        "radial-gradient(circle, rgba(237,234,208,1) 0%, rgba(134,186,161,1) 100%)",
+        "radial-gradient(circle, rgba(255,205,167,1) 2%, rgba(253,190,144,1) 42%, rgba(255,186,116,1) 61%, rgba(255,162,104,1) 100%)",
+
+
+    ];
+
+    const images = [frontImage, graphicImage, uiImage]; // Use imported images
+
+    const skills = [
+        {
+            name: "Front End Developer",
+            description: " I actively engaged in both front-end and back-end development, specializing in React, Bootstrap, and Javascript. I sharpened my problem-solving skills, deepened my website development insight, and actively contributed to user-friendly web pages using React, HTML, CSS, JavaScript, BootStrap, MySql, and other tools."
+        },
+        {
+            name: "Graphic Designer",
+            description: "I have worked on creating digital content for social media platforms, managing public relations and marketing efforts, and designing promotional materials such as posters, brochures, and certificates. I developed proficiency in Adobe Illustrator, Photoshop, and Canva. I came up with unique ideas and confidently presented that."
+        },
+        {
+            name: "UI/UX",
+            description: "UX design refers to the term “user experience design”, while UI stands for “user interface design”. Both elements are crucial to a product and work closely together.  I developed proficiency in  figma"
+        },
+
+    ];
+
+    const handleSkillClick = (index) => {
+        setActiveSkillIndex(index);
+        rotate(index); // Rotate based on the clicked index
+
+        // Show the description corresponding to the clicked skill and hide others
+        const descriptionRefs = document.querySelectorAll('.text-slider > div');
+        descriptionRefs.forEach((description, i) => {
+            description.style.display = index === i ? 'block' : 'none';
+        });
+    };
+
+
+    function rotate(index) {
+        const imageRef = document.querySelector('.img');
+        const indicatorRef = document.querySelector('.indicator');
+
+        if (imageRef && indicatorRef) {
+            imageRef.style.backgroundImage = `url(${images[index]})`; // Set background image dynamically
+            indicatorRef.style.transform = `translate(-50%, -50%) rotate(${rotateValues[index].indicator}deg)`;
+        }
+    }
+
+    useEffect(() => {
+        const descriptionRefs = Array.from(document.querySelectorAll('.text'));
+
+        descriptionRefs.forEach((text, index) => {
+            text.style.display = index === activeSkillIndex ? 'block' : 'none';
+        });
+    }, [activeSkillIndex]);
+
+
     return (
         <div className=''>
             <Container fluid className='mt-5 cont p-4'>
@@ -27,35 +96,36 @@ function Home() {
                         </div>
                     </div>
                     <div id='pic' className='column2 position-relative'>
-                        <Image src={me} alt='' className='pic' style={{ width: '420px', height: 'auto', zIndex: 3, position: 'relative' }} />
+                        <Image src={me} alt='' className='pic' style={{ maxWidth: '420px', height: 'auto', zIndex: 3, position: 'relative' }} />
                     </div>
                 </div>
-            </Container >
-            <Container fluid className='mt-5 mb-5 cont p-4' style={{ background: 'linear-gradient(120deg, rgba(218,208,250,1) 0%, rgba(200,165,201,1) 100%)', margin: 0 }}>
-                <Row className='d-flex flex-column flex-md-row'>
-                    <Col xs={12} md={6} className='p-md-3'>
-                        <h1 style={{ fontSize: '4rem', fontWeight: 'bold' }}>Skills & <span style={{ color: '#ad21ff' }}>Experience</span></h1>
-                    </Col>
-                    <Col xs={12} md={6} className='p-md-3'>
-                        <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>Experience</h1>
-                        <Col xs={6} lg="1" className='mt-4'>
-                            <div className="vl"></div>
-                        </Col>
-                        <Row className="mt-5">
-                            <Col xs="auto" className="pr-3 mt-1">
-                                <p style={{ fontSize: '10px', fontWeight: 'bold', margin: 0 }}>September 2023- January 2024</p>
-                            </Col>
-                            <Col xs="auto" className='mt-0'>
-                                <h4 style={{ fontSize: '22px', fontWeight: 'bold', margin: 0, color: '#ad21ff' }}>Front End Developer Intern</h4>
-                            </Col>
-                        </Row>
-                    </Col>
-                </Row>
             </Container>
-
-        </div >
+            <section className='circular-slider mb-3' style={{ background: colors[activeSkillIndex] }}>
+                <Container className='container-slider'>
+                    <div className='text-slider'>
+                        {skills.map((skill, index) => (
+                            <div key={index} style={{ display: activeSkillIndex === index ? 'block' : 'none' }}>
+                                <h2>{skill.name}</h2>
+                                <p>{skill.description}</p>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='slider ' >
+                        <div className='indicator'></div>
+                        <div className='skills'>
+                            {skills.map((skill, index) => (
+                                <div key={index}>
+                                    <span onClick={() => handleSkillClick(index)}>{skill.name}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <div className='img'></div>
+                    </div>
+                </Container>
+            </section>
+        </div>
     );
-};
+}
 
+export default Home;
 
-export default Home

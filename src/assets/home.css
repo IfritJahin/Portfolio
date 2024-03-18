@@ -1,4 +1,4 @@
-/* Base styles */
+/* Intro start */
 .part {
   text-align: left;
   color: #0a202d;
@@ -133,3 +133,121 @@
     margin-left: 100px; /* Adjust margin for larger screens */
   }
 }
+/* Intro end */
+/* Circular slider start */
+.circular-slider{
+  background: radial-gradient(circle, rgba(237,234,208,1) 0%, rgba(134,186,161,1) 100%);
+  min-height: 100vh;
+  padding: 1em 2em 0 2em;
+  position: relative;
+  color: #0a202d;
+  overflow: hidden;
+  text-align: center;
+}
+.text-slider h2{
+  font-size: 2em;
+  margin: 0.5rem 0.5rem;
+  color: #0a4161;
+}
+.text-slider p{
+  max-width: 950px;
+  line-height: 30px;
+  margin: 0 auto;
+  color: #0a4161;
+}
+.slider{
+  position: absolute;
+  bottom: -20vw;
+  left: 50%;
+  transform: translateX(-50%);
+  
+}
+.slider .img{
+  width: 70vw;
+  height: 70vw;
+  max-width: 600px;
+  max-height: 600px;
+  background-image: url('../img/front.png') ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 300ms;
+}
+
+.indicator{
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  max-width: 700px;
+  max-height: 700px;
+  border: 2px #ffffff solid;
+  border-radius: 50%;
+  transition: transform 300ms;
+  
+}
+
+.indicator::before{
+  content: "";
+  position: absolute;
+  top: -0.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1em;
+  height: 1em;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
+
+.skills, .skills div{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 85vw;
+  height: 85vw;
+  max-width: 750px;
+  max-height: 750px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.skills span{
+  position: absolute;
+  top: -1em;
+  left: 50%;
+  cursor: pointer;
+  transition: 200ms;
+  text-align: center;
+  transform: translateX(-50%);
+  color: #555151;
+  
+}
+.skills:hover{
+  color: #73774e;
+}
+
+.skills div:nth-child(1) {
+  transform: translate(-50%,-50%) rotate(0deg);
+  
+}
+
+.skills div:nth-child(2) {
+  transform: translate(-50%,-50%) rotate(58deg);
+}
+
+.skills div:nth-child(3) {
+  transform: translate(-50%,-50%) rotate(-58deg);
+}
+
+/* Media query for even smaller screens */
+@media screen and (min-width: 800px) {
+  .slider {
+    bottom: -18em; /* Further adjust position for very small screens */
+  }
+
+
+}
+/* Circular slider end*/
